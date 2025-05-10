@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -14,9 +16,11 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { WaitlistModal } from "@/components/WaitlistModal";
 
 export default function Home() {
+  const [showWaitlistModal, setShowWaitlistModal] = useState(false);
+
   return (
     <div className="flex min-h-screen flex-col relative">
       <header className="sticky top-0 z-40 w-full border-b bg-white">
@@ -64,7 +68,10 @@ export default function Home() {
             </Link>
           </nav>
           <div>
-            <Button className="bg-[#0047AB] hover:bg-[#003b8e]">
+            <Button
+              className="bg-[#0047AB] hover:bg-[#003b8e]"
+              onClick={() => setShowWaitlistModal(true)}
+            >
               Join Waitlist
             </Button>
           </div>
@@ -78,7 +85,7 @@ export default function Home() {
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
               <div className="space-y-6">
                 <h1 className="text-4xl font-bold tracking-tight text-black sm:text-5xl md:text-6xl">
-                  Decentralized Data{" "}
+                  Decentralized Data
                   <span className="text-[#0047AB]">Aggregation</span> Platform
                 </h1>
                 <p className="text-lg text-gray-600 max-w-2xl">
@@ -91,12 +98,20 @@ export default function Home() {
                   <p className="text-sm font-medium text-[#0047AB]">
                     Join our waitlist to be the first to know when we launch
                   </p>
-                  <form className="flex gap-2">
+                  <form
+                    className="flex gap-2"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setShowWaitlistModal(true);
+                    }}
+                  >
                     <Input
                       type="email"
                       placeholder="Enter your email"
-                      className="flex-1 border-[#0047AB]/30 focus-visible:ring-[#0047AB]"
-                      required
+                      className="flex-1 border-[#0047AB]/30 focus-visible:ring-[#0047AB] cursor-pointer select-none"
+                      onFocus={(e) => e.target.blur()}
+                      readOnly
+                      tabIndex={-1}
                     />
                     <Button
                       type="submit"
@@ -615,7 +630,10 @@ export default function Home() {
                 predictions and outcomes for all communities.
               </p>
               <div className="flex justify-center mt-8">
-                <Button className="bg-[#0047AB] hover:bg-[#003b8e]">
+                <Button
+                  className="bg-[#0047AB] hover:bg-[#003b8e]"
+                  onClick={() => setShowWaitlistModal(true)}
+                >
                   Join Our Mission
                 </Button>
               </div>
@@ -707,6 +725,7 @@ export default function Home() {
                 <Button
                   variant="outline"
                   className="bg-white text-[#0047AB] hover:bg-gray-100 border-white"
+                  onClick={() => setShowWaitlistModal(true)}
                 >
                   Join Waitlist <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -966,14 +985,17 @@ export default function Home() {
                     <p className="text-gray-600">
                       <span className="font-medium text-black">
                         Inclusive Development:
-                      </span>{" "}
+                      </span>
                       Builds a model that listens, adapts, and responds to those
                       most often ignored.
                     </p>
                   </li>
                 </ul>
                 <div className="pt-4">
-                  <Button className="bg-[#0047AB] hover:bg-[#003b8e]">
+                  <Button
+                    className="bg-[#0047AB] hover:bg-[#003b8e]"
+                    onClick={() => setShowWaitlistModal(true)}
+                  >
                     Join Our Mission
                   </Button>
                 </div>
@@ -1012,7 +1034,7 @@ export default function Home() {
                       <div>
                         <h4 className="font-medium text-black">Email</h4>
                         <a
-                          href="mailto:info@doera.com"
+                          href="mailto:muswalo@dottra.co"
                           className="text-[#0047AB] hover:underline"
                         >
                           muswalo@dottra.co
@@ -1055,12 +1077,20 @@ export default function Home() {
                     Be among the first to experience Dottra when we launch. Sign
                     up for our waitlist today.
                   </p>
-                  <form className="space-y-3">
+                  <form
+                    className="space-y-3"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setShowWaitlistModal(true);
+                    }}
+                  >
                     <Input
                       type="email"
                       placeholder="Enter your email"
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus-visible:ring-white/50"
-                      required
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus-visible:ring-white/50 cursor-pointer select-none"
+                      readOnly
+                      onFocus={(e) => e.target.blur()}
+                      tabIndex={-1}
                     />
                     <Button
                       type="submit"
@@ -1089,12 +1119,20 @@ export default function Home() {
                 underrepresented communities.
               </p>
               <div className="max-w-md mx-auto space-y-2">
-                <form className="flex gap-2">
+                <form
+                  className="flex gap-2"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    setShowWaitlistModal(true);
+                  }}
+                >
                   <Input
                     type="email"
                     placeholder="Enter your email"
-                    className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/60 focus-visible:ring-white/50"
-                    required
+                    className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/60 focus-visible:ring-white/50 cursor-pointer select-none"
+                    readOnly
+                    onFocus={(e) => e.target.blur()}
+                    tabIndex={-1}
                   />
                   <Button
                     type="submit"
@@ -1105,11 +1143,11 @@ export default function Home() {
                   </Button>
                 </form>
                 <p className="text-xs opacity-70">
-                  By signing up, you agree to our{" "}
+                  By signing up, you agree to our
                   <Link href="#" className="underline hover:opacity-100">
                     Terms
-                  </Link>{" "}
-                  and{" "}
+                  </Link>
+                  and
                   <Link href="#" className="underline hover:opacity-100">
                     Privacy Policy
                   </Link>
@@ -1275,12 +1313,20 @@ export default function Home() {
             </div>
             <div>
               <h3 className="text-lg font-bold mb-4">Join Our Waitlist</h3>
-              <form className="space-y-2">
+              <form
+                className="space-y-2"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setShowWaitlistModal(true);
+                }}
+              >
                 <Input
                   type="email"
                   placeholder="Enter your email"
-                  className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 focus-visible:ring-[#0047AB]"
-                  required
+                  className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 focus-visible:ring-[#0047AB] cursor-pointer select-none"
+                  readOnly
+                  onFocus={(e) => e.target.blur()}
+                  tabIndex={-1}
                 />
                 <Button
                   type="submit"
@@ -1329,6 +1375,11 @@ export default function Home() {
           <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.195 2.105 3.195 5.1 4.485.714.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345m-5.446 7.443h-.016c-1.77 0-3.524-.48-5.055-1.38l-.36-.214-3.75.975 1.005-3.645-.239-.375a9.869 9.869 0 0 1-1.516-5.26c0-5.445 4.455-9.885 9.942-9.885a9.865 9.865 0 0 1 7.022 2.91 9.788 9.788 0 0 1 2.909 6.99c-.004 5.444-4.46 9.885-9.935 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a12.062 12.062 0 0 0 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.246-6.165-3.498-8.445" />
         </svg>
       </a>
+
+      <WaitlistModal
+        isOpen={showWaitlistModal}
+        onClose={() => setShowWaitlistModal(false)}
+      />
     </div>
   );
 }
