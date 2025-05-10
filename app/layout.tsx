@@ -43,7 +43,7 @@ export const metadata = {
     siteName: "Dottra",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://dottra.co/og-image.png",
         width: 1200,
         height: 630,
         alt: "Dottra Platform Overview",
@@ -56,7 +56,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Dottra - Decentralized Data Aggregation Platform",
     description: "A decentralized data aggregation platform designed to capture and structure rich, granular data from underrepresented or niche segments of the population.",
-    images: ["/og-image.png"],
+    images: ["https://dottra.co/og-image.png"],
   },
   manifest: "/manifest.json",
   other: {
